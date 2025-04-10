@@ -1,14 +1,14 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
+import { useAuth } from "@/context/AuthContext";
 
 const signupSchema = z.object({
   fullName: z.string().min(3, { message: "Full name must be at least 3 characters." }),
@@ -19,9 +19,7 @@ const signupSchema = z.object({
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 const Signup = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const { toast } = useToast();
+  const { signUp, isLoading } = useAuth();
   
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
@@ -33,27 +31,7 @@ const Signup = () => {
   });
 
   const onSubmit = async (data: SignupFormValues) => {
-    setIsLoading(true);
-    try {
-      // This is a placeholder - will be connected to Supabase auth
-      console.log("Signup attempt with:", data);
-      toast({
-        title: "Signup placeholder",
-        description: "Real registration will be implemented with Supabase integration",
-      });
-      // For now, we'll simulate a successful signup
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    } catch (error) {
-      toast({
-        title: "Signup failed",
-        description: "Please try again with a different email address.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    await signUp(data.email, data.password, data.fullName);
   };
 
   return (

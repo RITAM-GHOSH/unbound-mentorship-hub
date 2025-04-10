@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
   Menu,
@@ -8,12 +8,16 @@ import {
   Calendar,
   Users,
   LogIn,
-  Home
+  Home,
+  LogOut,
+  User
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/context/AuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -46,16 +50,39 @@ const Navbar = () => {
             About Us
           </Link>
           <div className="pl-6 border-l border-gray-200">
-            <Link to="/login">
-              <Button variant="outline" className="mr-2">
-                Log In
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button className="bg-gtm-blue hover:bg-blue-600">
-                Sign Up
-              </Button>
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-3">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex items-center gap-1"
+                  onClick={() => signOut()}
+                >
+                  <LogOut size={16} />
+                  Log Out
+                </Button>
+                <Button 
+                  className="bg-gtm-blue hover:bg-blue-600 flex items-center gap-1"
+                  size="sm"
+                >
+                  <User size={16} />
+                  Profile
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="outline" className="mr-2">
+                    Log In
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button className="bg-gtm-blue hover:bg-blue-600">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
 
@@ -111,17 +138,44 @@ const Navbar = () => {
               <Calendar size={20} />
               <span>Events</span>
             </Link>
-            <Link 
-              to="/login" 
-              className="flex items-center space-x-2 text-lg font-medium"
-              onClick={toggleMenu}
-            >
-              <LogIn size={20} />
-              <span>Log In</span>
-            </Link>
-            <Button className="bg-gtm-blue hover:bg-blue-600 w-full" onClick={toggleMenu}>
-              <Link to="/signup" className="w-full">Sign Up</Link>
-            </Button>
+            
+            {user ? (
+              <>
+                <button 
+                  className="flex items-center space-x-2 text-lg font-medium"
+                  onClick={() => {
+                    signOut();
+                    toggleMenu();
+                  }}
+                >
+                  <LogOut size={20} />
+                  <span>Log Out</span>
+                </button>
+                <Button 
+                  className="bg-gtm-blue hover:bg-blue-600 w-full"
+                  onClick={toggleMenu}
+                >
+                  <Link to="/profile" className="w-full flex items-center justify-center gap-2">
+                    <User size={20} />
+                    Profile
+                  </Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link 
+                  to="/login" 
+                  className="flex items-center space-x-2 text-lg font-medium"
+                  onClick={toggleMenu}
+                >
+                  <LogIn size={20} />
+                  <span>Log In</span>
+                </Link>
+                <Button className="bg-gtm-blue hover:bg-blue-600 w-full" onClick={toggleMenu}>
+                  <Link to="/signup" className="w-full">Sign Up</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
