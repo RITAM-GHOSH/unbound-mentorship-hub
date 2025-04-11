@@ -8,7 +8,6 @@ import {
   Calendar,
   Users,
   LogIn,
-  Home,
   LogOut,
   User
 } from 'lucide-react';
@@ -36,8 +35,7 @@ const Navbar = () => {
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="font-medium text-gray-600 hover:text-gtm-blue transition-colors flex items-center gap-1">
-            <Home size={18} />
+          <Link to="/" className="font-medium text-gray-600 hover:text-gtm-blue transition-colors">
             Home
           </Link>
           <Link to="/mentors" className="font-medium text-gray-600 hover:text-gtm-blue transition-colors">
@@ -119,7 +117,6 @@ const Navbar = () => {
               className="flex items-center space-x-2 text-lg font-medium"
               onClick={toggleMenu}
             >
-              <Home size={20} />
               <span>Home</span>
             </Link>
             <Link 
