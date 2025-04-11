@@ -46,7 +46,7 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/dab20404-75af-4648-ae4c-2fd1680bb6b6.png" 
                 alt="GTM Unbound Logo" 
-                className="h-20"
+                className="h-28" // Increased from h-20 to h-28
               />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">

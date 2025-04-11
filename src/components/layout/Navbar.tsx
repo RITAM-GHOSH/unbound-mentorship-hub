@@ -27,6 +27,11 @@ const Navbar = () => {
       <nav className="gtm-container flex items-center justify-between py-4">
         <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-2">
+            <img 
+              src="/lovable-uploads/dab20404-75af-4648-ae4c-2fd1680bb6b6.png" 
+              alt="GTM Unbound Logo" 
+              className="h-8 mr-2"
+            />
             <span className="text-xl font-bold bg-gradient-to-r from-gtm-blue to-gtm-purple text-transparent bg-clip-text">
               GTM Unbound
             </span>
@@ -39,7 +44,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/mentors" className="font-medium text-gray-600 hover:text-gtm-blue transition-colors">
-            Find Mentors
+            Mentorship
           </Link>
           <Link to="/events" className="font-medium text-gray-600 hover:text-gtm-blue transition-colors">
             Events
@@ -102,7 +107,15 @@ const Navbar = () => {
         )}
       >
         <div className="flex flex-col h-full p-6">
-          <div className="flex justify-end">
+          <div className="flex justify-between">
+            <Link to="/" className="flex items-center" onClick={toggleMenu}>
+              <img 
+                src="/lovable-uploads/dab20404-75af-4648-ae4c-2fd1680bb6b6.png" 
+                alt="GTM Unbound Logo" 
+                className="h-8 mr-2"
+              />
+              <span className="text-xl font-bold">GTM Unbound</span>
+            </Link>
             <button 
               className="p-2 rounded-md"
               onClick={toggleMenu}
@@ -125,7 +138,7 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               <Users size={20} />
-              <span>Find Mentors</span>
+              <span>Mentorship</span>
             </Link>
             <Link 
               to="/events" 
