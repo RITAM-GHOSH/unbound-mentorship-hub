@@ -69,7 +69,10 @@ export default {
 					indigo: '#4F46E5',
 					purple: '#7C3AED',
 					light: '#F8FAFC',
-					dark: '#0F172A'
+					dark: '#0F172A',
+                    red: '#FF5252',
+                    redLight: '#FF8A80',
+                    redPale: '#FFEBEE'
 				}
 			},
 			borderRadius: {

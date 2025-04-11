@@ -2,7 +2,10 @@
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, CheckCircle, Heart, MessageSquare, Users, Zap } from "lucide-react";
+import { ArrowRight, Calendar, CheckCircle, Heart, MessageSquare, Users, Zap, Mail, Youtube } from "lucide-react";
+import { useState } from "react";
+import YouTubeVideo from "@/components/YouTubeVideo";
+import RequestInviteForm from "@/components/RequestInviteForm";
 
 const Index = () => {
   // Featured mentors data
@@ -39,20 +42,30 @@ const Index = () => {
       <section className="bg-white py-20">
         <div className="gtm-container">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-6">
+              <img 
+                src="/lovable-uploads/dab20404-75af-4648-ae4c-2fd1680bb6b6.png" 
+                alt="GTM Unbound Logo" 
+                className="h-20"
+              />
+            </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Accelerate Your <span className="bg-gradient-to-r from-gtm-blue to-gtm-purple text-transparent bg-clip-text">Go-to-Market</span> Strategy
+              Accelerate Your <span className="bg-gradient-to-r from-[#FF5252] to-[#FF8A80] text-transparent bg-clip-text">Go-to-Market</span> Strategy
             </h1>
             <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
               Connect with industry leaders, access proven frameworks, and transform your GTM approach for sustainable growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gtm-blue hover:bg-blue-600 text-white px-6">
+              <Button size="lg" className="bg-[#FF5252] hover:bg-[#FF8A80] text-white px-6">
                 <Link to="/mentors" className="flex items-center gap-2">
-                  Find a Mentor <ArrowRight size={16} />
+                  Mentorship <ArrowRight size={16} />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-gtm-blue text-gtm-blue px-6">
+              <Button size="lg" variant="outline" className="border-[#FF5252] text-[#FF5252] px-6">
                 <Link to="/events">Browse Events</Link>
+              </Button>
+              <Button size="lg" className="bg-[#FF8A80] hover:bg-[#FFAB91] text-white px-6">
+                <Mail size={16} className="mr-2" /> Request Invite
               </Button>
             </div>
           </div>
@@ -64,27 +77,43 @@ const Index = () => {
         <div className="gtm-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold text-gtm-blue">500+</p>
+              <p className="text-4xl font-bold text-[#FF5252]">500+</p>
               <p className="text-gray-600">GTM Experts</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-gtm-blue">1,200+</p>
+              <p className="text-4xl font-bold text-[#FF5252]">1,200+</p>
               <p className="text-gray-600">Success Stories</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-gtm-blue">75+</p>
+              <p className="text-4xl font-bold text-[#FF5252]">75+</p>
               <p className="text-gray-600">Monthly Events</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-gtm-blue">92%</p>
+              <p className="text-4xl font-bold text-[#FF5252]">92%</p>
               <p className="text-gray-600">Satisfaction Rate</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features section */}
+      {/* YouTube Video Section */}
       <section className="py-20 bg-white">
+        <div className="gtm-container">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn From Our Experts</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Watch our latest videos to get insights from top GTM professionals and accelerate your growth strategy.
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <YouTubeVideo channelId="@aditiaggarwal7" />
+          </div>
+        </div>
+      </section>
+
+      {/* Features section */}
+      <section className="py-20 bg-gray-50">
         <div className="gtm-container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything You Need to Excel in GTM</h2>
@@ -95,8 +124,8 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div className="p-6 rounded-xl border border-gray-200 bg-white shadow-sm">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <Users className="text-gtm-blue" size={24} />
+              <div className="w-14 h-14 bg-[#FFEBEE] rounded-full flex items-center justify-center mb-4">
+                <Users className="text-[#FF5252]" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-3">1:1 Mentorship</h3>
               <p className="text-gray-600">
@@ -119,8 +148,8 @@ const Index = () => {
             </div>
 
             <div className="p-6 rounded-xl border border-gray-200 bg-white shadow-sm">
-              <div className="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                <Calendar className="text-gtm-indigo" size={24} />
+              <div className="w-14 h-14 bg-[#FFEBEE] rounded-full flex items-center justify-center mb-4">
+                <Calendar className="text-[#FF5252]" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-3">Exclusive Events</h3>
               <p className="text-gray-600">
@@ -143,8 +172,8 @@ const Index = () => {
             </div>
 
             <div className="p-6 rounded-xl border border-gray-200 bg-white shadow-sm">
-              <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                <MessageSquare className="text-gtm-purple" size={24} />
+              <div className="w-14 h-14 bg-[#FFEBEE] rounded-full flex items-center justify-center mb-4">
+                <MessageSquare className="text-[#FF5252]" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-3">Community Access</h3>
               <p className="text-gray-600">
@@ -170,7 +199,7 @@ const Index = () => {
       </section>
 
       {/* Featured mentors section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="gtm-container">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <div>
@@ -180,7 +209,7 @@ const Index = () => {
               </p>
             </div>
             <Link to="/mentors" className="mt-6 md:mt-0">
-              <Button variant="outline" className="border-gtm-blue text-gtm-blue">
+              <Button variant="outline" className="border-[#FF5252] text-[#FF5252]">
                 View All Mentors
               </Button>
             </Link>
@@ -190,7 +219,7 @@ const Index = () => {
             {featuredMentors.map((mentor) => (
               <div key={mentor.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div className="p-6 flex flex-col items-center text-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-gtm-blue/20">
+                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-[#FF8A80]/20">
                     <img 
                       src={mentor.image} 
                       alt={mentor.name}
@@ -213,13 +242,13 @@ const Index = () => {
                     {mentor.topics.map((topic, index) => (
                       <span 
                         key={index} 
-                        className="px-3 py-1 bg-blue-50 text-gtm-blue text-xs rounded-full"
+                        className="px-3 py-1 bg-[#FFEBEE] text-[#FF5252] text-xs rounded-full"
                       >
                         {topic}
                       </span>
                     ))}
                   </div>
-                  <Button size="sm" className="bg-gtm-blue hover:bg-blue-600 text-white w-full">
+                  <Button size="sm" className="bg-[#FF5252] hover:bg-[#FF8A80] text-white w-full">
                     View Profile
                   </Button>
                 </div>
@@ -230,7 +259,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="gtm-container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Members Say</h2>
@@ -321,20 +350,35 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Request Invite Section */}
+      <section id="request-invite" className="py-20 bg-white">
+        <div className="gtm-container">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Request an Invite</h2>
+              <p className="text-xl text-gray-600">
+                Join our exclusive community of GTM professionals. Fill out the form below to request an invite.
+              </p>
+            </div>
+            <RequestInviteForm />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gtm-blue/10 via-gtm-indigo/10 to-gtm-purple/10">
+      <section className="py-20 bg-gradient-to-br from-[#FFEBEE] via-[#FFCDD2] to-[#FFCCBC]">
         <div className="gtm-container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your GTM Strategy?</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Join GTM Unbound today to access expert mentorship, attend exclusive events, and connect with a community of GTM professionals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gtm-blue hover:bg-blue-600 text-white px-8">
+            <Button size="lg" className="bg-[#FF5252] hover:bg-[#FF8A80] text-white px-8">
               <Link to="/signup" className="flex items-center gap-2">
                 Join Now <ArrowRight size={16} />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-gtm-blue text-gtm-blue px-8">
+            <Button size="lg" variant="outline" className="border-[#FF5252] text-[#FF5252] px-8">
               <Link to="/mentors">Explore Mentors</Link>
             </Button>
           </div>
